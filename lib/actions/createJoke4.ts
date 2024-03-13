@@ -18,7 +18,6 @@ export async function createJoke(_prevState: CreateJokeState, data: FormData): P
   });
 
   if (!result.success) {
-    revalidatePath('/jokes');
     return {
       errors: result.error.formErrors,
       message: 'VALIDATION ERROR',
@@ -31,7 +30,6 @@ export async function createJoke(_prevState: CreateJokeState, data: FormData): P
       data: result.data,
     });
   } catch (e) {
-    revalidatePath('/jokes');
     return {
       message: 'SERVER ERROR',
       success: false,
